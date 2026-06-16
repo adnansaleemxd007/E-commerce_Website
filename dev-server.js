@@ -8,7 +8,7 @@ const backend = spawn('node', [path.join(__dirname, 'backend', 'server.js')], {
 });
 
 // Spawn the React frontend
-const frontend = spawn('npx', ['react-scripts', 'start'], {
+const frontend = spawn('npx', ['vite'], {
   stdio: 'inherit',
   shell: true,
   env: { ...process.env }
