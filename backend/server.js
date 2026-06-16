@@ -1,6 +1,12 @@
-require('dotenv').config();
-const dns = require('node:dns');
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+try { require('dotenv').config(); } catch (e) { /* dotenv not needed in production */ }
+
+// Only override DNS on non-serverless environments
+if (!process.env.VERCEL) {
+  try {
+    const dns = require('node:dns');
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
+  } catch (e) { /* DNS override not available */ }
+}
 
 const express = require('express');
 const mongoose = require('mongoose');
