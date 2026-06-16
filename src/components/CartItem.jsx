@@ -12,17 +12,17 @@ const CartItem = ({item}) => {
   }
 
   return (
-    <div className="w-full border-b-2 p-6 mt-3 flex border-black">
+    <div className="w-full border-b-2 p-4 md:p-6 mt-3 flex border-gray-300">
 
-      <div className="w-full flex justify-between gap-x-10">
+      <div className="w-full flex flex-col md:flex-row justify-between gap-x-10 gap-y-4 md:gap-y-0 items-center md:items-start">
     
-        <div className="w-[170px] object-fill">
-          <img src={item.image} alt="" className=""/>
+        <div className="w-32 md:w-[170px] flex-shrink-0">
+          <img src={item.image} alt="" className="w-full h-auto object-contain"/>
         </div>
 
-        <div className="w-[450px] flex flex-col gap-y-4">
-          <h1 className="font-semibold text-lg">{item.title}</h1>
-          <h1 className="text-sm">{item.description.split(" ").slice(1,20).join(" ") + "..."}</h1>
+        <div className="w-full md:w-[450px] flex flex-col gap-y-4">
+          <h1 className="font-semibold text-lg text-center md:text-left">{item.title}</h1>
+          <h1 className="text-sm text-center md:text-left">{item.description.split(" ").slice(1,20).join(" ") + "..."}</h1>
           <div className="flex justify-between">
             <p className="text-green-700 font-semibold">${item.price}</p>
             <div

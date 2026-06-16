@@ -64,13 +64,13 @@ const Home = () => {
   console.log(filtered)
 
   return (
-    <div className="flex bg-gray-100 p-10 mx-auto space-x-4">
+    <div className="flex flex-col md:flex-row bg-gray-100 p-4 md:p-10 mx-auto space-y-4 md:space-y-0 md:space-x-4 min-h-screen">
       {/* Sidebar filters */}
-      <div className="w-64 p-4 rounded border-r-2 border-gray-200 bg-white shadow-sm">
+      <div className="w-full md:w-64 p-4 rounded border-b-2 md:border-b-0 md:border-r-2 border-gray-200 bg-white shadow-sm h-fit">
         {/* Category Filter */}
-        <div className="mb-6 mt-5">
+        <div className="mb-6 mt-2 md:mt-5">
           <p className="font-semibold text-lg mb-2">Category</p>
-          <div className="flex flex-col mt-2 space-y-1">
+          <div className="flex flex-row md:flex-col flex-wrap md:flex-nowrap gap-2 md:gap-0 mt-2 md:space-y-1">
             {uniqueCategories.map((cat) => (
               <button
                 key={cat}
@@ -87,8 +87,8 @@ const Home = () => {
         {/* Price Filter */}
         <div className="mb-4">
           <p className="font-semibold text-lg mb-2">Price</p>
-          <div className="flex flex-col mt-2 space-y-2">
-            <label className="cursor-pointer">
+          <div className="flex flex-row md:flex-col gap-4 md:gap-0 mt-2 md:space-y-2">
+            <label className="cursor-pointer flex items-center">
               <input
                 type="radio"
                 name="price"
@@ -100,7 +100,7 @@ const Home = () => {
               $0 - $50
             </label>
 
-            <label className="cursor-pointer">
+            <label className="cursor-pointer flex items-center">
               <input
                 type="radio"
                 name="price"
@@ -112,7 +112,7 @@ const Home = () => {
               $50 - $100
             </label>
 
-            <label className="cursor-pointer">
+            <label className="cursor-pointer flex items-center">
               <input
                 type="radio"
                 name="price"
@@ -129,13 +129,15 @@ const Home = () => {
       </div>
 
       {/* Product grid */}
-      <div className="flex-1 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {loading ? (
-          <Spinner />
+          <div className="col-span-full flex justify-center items-center py-20">
+             <Spinner />
+          </div>
         ) : filtered.length > 0 ? (
           filtered.map((post) => <Product key={post.id} post={post} />)
         ) : (
-          <p>No data found</p>
+          <p className="col-span-full text-center text-gray-500 py-10">No data found</p>
         )}
       </div>
     </div>

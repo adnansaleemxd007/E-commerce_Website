@@ -12,18 +12,18 @@ const Cart = () => {
   }, [cart])
 
   return (
-    <div className="w-full max-w-[1000px] mx-auto pt-4 relative">
+    <div className="w-full max-w-[1000px] mx-auto pt-4 relative px-4 md:px-0">
       {
         cart.length > 0 ? 
-        (<div className="flex justify-between">
-          <div className="mt-16">
+        (<div className="flex flex-col lg:flex-row justify-between">
+          <div className="mt-8 lg:mt-16 w-full lg:w-2/3">
             {
               cart.map((item, index) => (
                 <CartItem key={index} item={item} />
               ))
             }
           </div>
-          <div className="mt-32 flex flex-col justify-between h-[500px] ml-8">
+          <div className="mt-12 lg:mt-32 flex flex-col justify-between h-auto lg:h-[500px] ml-0 lg:ml-8 w-full lg:w-1/3 mb-10">
             <div>
               <div className="uppercase text-green-700 font-semibold">Your Cart</div>
               <div className="uppercase text-green-700 font-bold text-4xl">Summary</div>
