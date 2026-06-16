@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "vite",
+    "start": "node backend/server.js",
     "dev": "node dev-server.js",
     "build": "vite build",
     "preview": "vite preview"
