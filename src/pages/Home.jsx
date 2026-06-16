@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts, setSelectedCategory, setSelectedPrice, updateFilteredProducts } from "../redux/Slices/CartSlice";
 
 const Home = () => {
-  const API_URL = "/api/products";
+  const API_URL = import.meta.env.VITE_BACKEND_API ? import.meta.env.VITE_BACKEND_API + "/api/products" : "/api/products";
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
 

@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 const Admin = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const API_BASE = import.meta.env.VITE_BACKEND_API || "";
   
   // Form State
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ const Admin = () => {
   // Fetch all products
   const fetchProducts = async () => {
     try {
-      const res = await fetch('/api/products');
+      const res = await fetch(`${API_BASE}/api/products`);
       const data = await res.json();
       setProducts(data);
     } catch (error) {
@@ -56,7 +57,7 @@ const Admin = () => {
     setLoading(true);
 
     const method = editId ? 'PUT' : 'POST';
-    const url = editId ? `/api/products/${editId}` : '/api/products';
+    const url = editId ? `${API_BASE}/api/products/${editId}` : `${API_BASE}/api/products`;
 
     try {
       const res = await fetch(url, {
@@ -84,7 +85,7 @@ const Admin = () => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
     
     try {
-      const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE}/api/products/${id}`, { method: 'DELETE' });
       if (res.ok) {
         toast.success('Product deleted');
         fetchProducts();
