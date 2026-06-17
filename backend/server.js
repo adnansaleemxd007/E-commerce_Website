@@ -11,6 +11,7 @@ if (!process.env.VERCEL) {
 const express = require('express');
 const mongoose = require('mongoose');
 const productRoutes = require('./routes/productRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 
@@ -27,6 +28,7 @@ mongoose.connect(MONGO_URI)
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Add a simple health check route
 app.get('/api/health', (req, res) => res.send('API is running...'));

@@ -10,6 +10,9 @@ const CartSlice = createSlice({
         },
         remove: (state, action) => {
             return state.filter((item) => item.id !== action.payload)
+        },
+        clear: (state) => {
+            return [];
         }
     }
 })
@@ -41,7 +44,7 @@ const ProductSlice = createSlice({
 });
 
 
-export const { add, remove } = CartSlice.actions;
+export const { add, remove, clear } = CartSlice.actions;
 export const { setProducts, updateFilteredProducts, setSelectedCategory,
     setSelectedPrice, } = ProductSlice.actions;
 

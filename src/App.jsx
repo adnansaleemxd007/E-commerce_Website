@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import Cart from "./pages/Cart";
 import Admin from "./pages/Admin";
 import Footer from "./Footer";
@@ -9,14 +10,15 @@ import Footer from "./Footer";
 const App = () => {
   return(
     <> 
-      <div className="flex flex-col min-h-screen">
-        <div className="bg-slate-900 fixed w-full z-10">
+      <div className="flex flex-col min-h-screen bg-gray-100">
+        <div className="fixed w-full z-50">
           <Navbar />
         </div>
 
-        <div className="flex-1 pt-16"> {/* pt-16 to offset fixed navbar height */}
+        <div className="flex-1 pt-16">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
